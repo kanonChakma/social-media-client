@@ -1,10 +1,12 @@
 export default (posts=[], action)=> {
-    switch(action.type){
+    switch(action.type) {
         case 'FETCH_ALL':
            return action.payload;
+        case 'UPDATE':
+            return posts.map((post) =>post._id === action.payload._id? action.payload :posts );    
         case 'CREATE':
             return [...posts, action.payload];
-         default:
+        default:
             return posts;     
     }
 }
